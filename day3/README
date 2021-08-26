@@ -1,1 +1,1 @@
-dockerfile_arg中verion在容器中怎么无法查看？
+dockerfile_arg中python的version查看是2.7是因为有more安装的python2.7
