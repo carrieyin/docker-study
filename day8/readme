@@ -1,0 +1,5 @@
+docker来自官方https://github.com/docker-library/mysql/tree/master/5.7
+
+docker image build -t mysql .
+docker container run --name some-mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d -v mysql-data:/var/lib/mysql mysql:latest
+docker exec -it 8c   sh 

@@ -1,2 +1,3 @@
 FROM ubuntu:21.04
 ENV version=3.0
+CMD ["echo", "hello "]
