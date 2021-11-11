@@ -10,13 +10,17 @@ services:
       - REDIS_HOST=redis-server
     networks:
       - demo-network
-    ports:
-      - 8080:5000
+
 
   redis-server:
     image: redis:latest
     networks:
       - demo-network
-
+      
+  box1:
+    image: box1
+    command: /bin/sh -c "while true; do sleep 3600; done"
+    networks:
+      - demo-network
 networks:
   demo-network:
