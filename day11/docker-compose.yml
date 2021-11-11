@@ -1,0 +1,23 @@
+version: "3.8"
+
+services:
+  box1:
+    image: box1
+    command: /bin/sh -c "while true; do sleep 3600; done"
+    networks:
+      - mynetwork1
+
+  box2:
+    image: box1
+    command: /bin/sh -c "while true; do sleep 3600; done"
+    networks:
+      - mynetwork1
+      - mynetwork2
+
+networks:
+  mynetwork1:
+    ipam:
+      driver: default
+  mynetwork2:
+    ipam:
+      driver: default
