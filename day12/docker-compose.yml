@@ -1,0 +1,37 @@
+version: "3.8"
+
+services:
+  flask-demo:
+    build: 
+      context: ./flask
+      dockerfile: Dockerfile
+    image: flask-demo
+    environment:
+      - REDIS_HOST=redis-server
+      - REDIS_PASS=abc123
+    networks:
+      - backend 
+      - frontend
+
+
+  redis-server:
+    image: redis:latest
+    command: redis-server --requirepass abc123
+    networks:
+      - backend
+      
+  nginx:
+    image: nginx
+    ports:
+      - 8000:80
+    depends_on:
+      - flask-demo
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./var/log/nginx:/var/log/nginx
+    networks:
+      - frontend
+
+networks:
+  frontend:
+  backend:
