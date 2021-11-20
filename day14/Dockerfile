@@ -11,9 +11,10 @@ RUN yum install -y make && \
     mkdir -p /usr/src/redis && \
     tar -xzf redis-6.0.9.tar.gz -C /usr/src/redis --strip-components=1 
 
-RUN cd /usr/src/redis && make && make PREFIX=/usr/src/bin install && \
-    cp /usr/src/redis/redis.conf /usr/src/bin/bin/
+RUN cd /usr/src/redis && make 
+RUN cd /usr/src/redis/src && make install PREFIX=/usr/src
+RUN cp /usr/src/redis/redis.conf /usr/src/bin
 
-WORKDIR /usr/src/bin/bin
+WORKDIR /usr/src/bin
 
-CMD ["/bin/sh", "-c", "while true; do sleep 3600; done"]
+CMD ["/bin/sh", "-c", "./redis-server"]

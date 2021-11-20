@@ -6,9 +6,10 @@ services:
       context: .
       dockerfile: Dockerfile
     image: redis-server
-    command: /bin/sh -c "while true; do sleep 3600; done;"
+    command: /bin/bash -c "cd /usr/src/bin && ./redis-server"
+      
     ports:
       - 6379:6379
     volumes:
-      - ./redis/:/usr/src/bin/bin/
-      - ./data:/usr/src/bin/bin/data
+      - ./redis/redis.conf:/usr/src/bin/redis.conf
+      - ./data:/usr/src/bin/data

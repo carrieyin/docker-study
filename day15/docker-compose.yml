@@ -6,3 +6,10 @@ services:
       - 6379:6379
     volumes:
       - ./redis/redis.conf:/usr/local/bin/redis.conf
+  
+  client:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: client
+    command: /bin/sh -c "while true; do sleep 3600; done;"
