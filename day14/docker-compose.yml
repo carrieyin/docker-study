@@ -1,0 +1,14 @@
+version: "3.8"
+
+services:
+  centos:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    image: centos
+    command: /bin/sh -c "while true; do sleep 3600; done;"
+    ports:
+      - 6379:6379
+    volumes:
+      - ./redis/:/usr/local:ro
+      - ./data:/etc/data
