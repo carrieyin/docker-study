@@ -15,7 +15,6 @@ RUN cd /usr/src/redis && make
 RUN cd /usr/src/redis/src && make install PREFIX=/usr/src
 RUN cp /usr/src/redis/redis.conf /usr/src/bin
 
-ADD docker-entrypoint.sh /usr/src/bin/docker-entrypoint.sh
 
-EXPOSE 6379
 
+CMD ["/bin/sh", "-c", "./redis-server"]
