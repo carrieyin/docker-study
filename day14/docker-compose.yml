@@ -6,8 +6,8 @@ services:
       context: .
       dockerfile: Dockerfile
     image: redis-server
-    command: /bin/bash -c "cd /usr/src/bin && ./redis-server"
-      
+    working_dir: /usr/src/bin
+    command: /bin/sh -c "./redis-server ./redis.conf"  
     ports:
       - 6379:6379
     volumes:
