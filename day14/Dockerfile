@@ -17,4 +17,3 @@ RUN cp /usr/src/redis/redis.conf /usr/src/bin
 
 
 
-CMD ["/bin/sh", "-c", "./redis-server"]
